@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import Logo from './Logo';
 import { AiOutlineEnter } from "react-icons/ai";
 
+const backend_url=import.meta.env.VITE_URL;
+
 const Chatbot = () => {
     const [messages, setMessages] = useState([]);
     const [inputText, setInputText] = useState('');
@@ -34,7 +36,8 @@ const Chatbot = () => {
 
     const handleServer = async (message) => {
         try {
-            const response = await fetch('http://localhost:3000/query', {
+            // const backend_url = 'http://localhost:3000/query'
+            const response = await fetch(`${backend_url}/query`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
