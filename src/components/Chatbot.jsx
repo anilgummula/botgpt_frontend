@@ -84,7 +84,7 @@ const Chatbot = () => {
             {/* input area */}
             <form onSubmit={handleSubmit}>
                 <div className='flex w-full fixed bottom-0 justify-center p-1'>
-                    <div className='flex md:h-12 h-12 md:w-200 min-w-100 bg-slate-100 border-2 rounded-md p-2'>
+                    <div className='flex md:h-12 h-12 md:w-200 mx-10 md:mx-8 bg-slate-100 border-2 rounded-md p-2'>
                         <input
                             className='w-full bg-slate-100 p-2 outline-none'
                             type="text"
