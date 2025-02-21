@@ -64,7 +64,7 @@ const Chatbot = () => {
             <Logo />
             {
                 title? 
-                <div className='flex justify-center p-10 mt-40 text-3xl text-white font-bold'>
+                <div className='flex justify-center align-center p-10 mx-auto mt-40 text-3xl text-white font-bold'>
                     <h1>What can I help with?</h1>
                 </div>: " " 
             }
