@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    environment {
+        NETLIFY_AUTH_TOKEN = credentials('NETLIFY_AUTH_TOKEN')  // Get token from Jenkins
+        NETLIFY_SITE_ID = "7378f086-7ca9-4a77-a794-f95cac543341"  // Replace with your actual Netlify Site ID
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/anilgummula/botgpt_frontend.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Build Frontend') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+
+        stage('Deploy to Netlify') {
+            steps {
+                sh '''
+                npm install -g netlify-cli
+                netlify deploy --prod --dir=build --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
+                '''
+            }
+        }
+    }
+}
